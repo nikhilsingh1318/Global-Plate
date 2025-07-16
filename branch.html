@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="shortcut icon" type="global plate icon" href="png-logo.png">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GP/Branch</title>
+  <link rel="stylesheet" href="CSS.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+</head>
+
+<style>
+
+  .login-box {
+    position: relative;
+    width: 90%;
+    min-width: 400px;
+    min-height: 450px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(8px);
+    background: url("https://www.shutterstock.com/image-vector/dark-blue-black-light-wall-600nw-2458398841.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+    box-shadow: 10px 10px 20px rgba(255, 255, 255, 0.649);
+  }
+
+  h2 {
+    font-size: 2em;
+    color: rgb(255, 255, 255);
+    text-align: center;
+  }
+
+  .input-box {
+    position: relative;
+    width: 310px;
+    margin: 30px 0;
+    height: 50px;
+  }
+
+  .input-box label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 15px;
+    color: rgb(255, 255, 255);
+    pointer-events: none;
+    animation: blink 1.5s 1;
+    transition: 0.6s;
+
+  }
+
+  .input-box input:focus~label,
+  .input-box input:valid~label {
+    top: -10px;
+    font-size: 10px;
+  }
+
+  @keyframes blink {
+
+    0%,
+    25% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0;
+    }
+
+    75% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .input-box input {
+    width: 100%;
+    height: 50px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: rgb(255, 255, 255);
+    margin-left: -30px;
+  }
+
+  .input-box .icon {
+    position: absolute;
+    right: 8px;
+    color: rgb(255, 255, 255);
+    font-size: 1.2em;
+    line-height: 57px;
+    animation: blink 1.5s 1;
+    margin-top: 8px;
+  }
+
+  .remember-forgot {
+    margin: -10px 5px 15px;
+    font-size: .9em;
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  .remember-forgot label input {
+    margin-right: 3px;
+  }
+
+  .remember-forgot a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+  }
+
+  .remember-forgot a:hover {
+    text-decoration: underline;
+  }
+
+  .login-done {
+    width: 70%;
+    height: 40px;
+    margin-top: 50px;
+    background: rgba(255, 255, 255, 0.966);
+    border-radius: 40px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1em;
+    color: #000000;
+    font-weight: 500;
+    position: absolute;
+    text-align: center;
+    padding: 6px;
+    text-decoration: none;
+    margin-left: 15px;
+  }
+
+  .login-done:hover {
+    background-color: rgba(56, 65, 143, 0.94);
+    color: white;
+  }
+
+  .register-link {
+    font-size: .9em;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin: 25px 0 10px;
+  }
+
+  .register-link p a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .register-link p a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width:360px) {
+    .login-box {
+      width: 100%;
+      height: 100vh;
+      border: none;
+      border-radius: 0;
+    }
+
+    .input-box {
+      width: 290px;
+    }
+  }
+
+  .popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .popup.active {
+    display: block;
+  }
+
+  .popup h2 {
+    margin-top: 0;
+  }
+
+  .popup input {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+  }
+
+  .popup button {
+    width: 100%;
+    padding: 10px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .popup button:hover {
+    background: #218838;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+  }
+
+  .login-btn {
+    position: absolute;
+    text-decoration: none;
+    margin-left: 180px;
+    font-size: 17px;
+    margin-top: 60px;
+    background-color: #ff6347;
+    border: none;
+    color: #ffffff;
+    padding: 5px 0px;
+    height: 40px;
+    border-radius: 5px;
+    width: 90px;
+  }
+
+  .login-btn:hover {
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 0px;
+    height: 40px;
+  }
+  
+</style>
+
+<body>
+
+
+  <!-- menu -->
+
+  <div class="menu">
+    <nav class="navbar   navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid    menu-box">
+        <a class="navbar-brand" href="#"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse  menu-div-box" id="navbarNavDropdown">
+          <ul class="navbar-nav" style="margin-left: -15.9px;">
+            <li class="nav-item ">
+              <a class="nav-link active" aria-current="page" style="color: #7e7c7c;" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="color: #7e7c7c;" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" style="color:#7e7c7c ;">Our branch</a>
+            </li>
+            <li class="nav-item dropdown">
+              <select class="food-style" style="color: #7e7c7c;" name="food-style"
+                onchange="window.location.href=this.value;">
+                <option class="" value="index.html">food categories</option>
+                <option class="veg" value="veg.html">Veg</option>
+                <option class="non-veg" value="non-veg.html">Non-Veg</option>
+                <option class="seafoods" value="seafood.html">Seafoods</option>
+              </select>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <nav class="navbar bg-body-tertiary   hide-div">
+      <div class="container-fluid">
+        <form class="d-flex search-div-box" role="search">
+          <input id="searchInput" class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+            style="height: auto; margin-top: 5px;" list="food-options">
+          <datalist id="food-options"></datalist>
+          <button class="btn btn-outline-success" type="submit"
+            style="margin-top: 5px; width: 90px; height: 40px; text-align: center; padding: 0px 5px;">Search</button>
+        </form>
+      </div>
+
+      <script>
+        const foodList = [
+          "Pizza", "Burger", "Pasta", "Sushi", "Tacos", "Biryani", "Dumplings",
+          "Steak", "Ramen", "Sandwich", "Noodles", "Salad", "Fried Rice",
+          "Shawarma", "Paneer Tikka", "Fish Curry", "Pav Bhaji", "Chocolate Cake",
+          "Ice Cream", "Momos"
+        ];
+
+        const searchInput = document.getElementById("searchInput");
+        const datalist = document.getElementById("food-options");
+
+        searchInput.addEventListener("input", function () {
+          let value = searchInput.value.toLowerCase();
+          datalist.innerHTML = "";
+
+          if (value.length > 0) {
+            let filteredList = foodList.filter(item => item.toLowerCase().startsWith(value));
+
+            filteredList.forEach(food => {
+              let option = document.createElement("option");
+              option.value = food;
+              datalist.appendChild(option);
+            });
+          }
+        });
+      </script>
+
+    </nav>
+
+    <a href="index.html"><img src="png-logo.png" class="logo"></a>
+
+    <button onclick="openPopup()" class="login-btn" style="margin-left: 1380px; margin-top: -60px;">Login</button>
+    <div id="loginPopup" class="popup">
+      <div class="login-box">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <form action="">
+          <h2>Login</h2>
+          <div class="input-box">
+            <span class="icon"><ion-icon name="mail"></ion-icon></span>
+            <input type="text" required>
+            <label>Email</label>
+          </div>
+          <div class="input-box">
+            <span class="icon"><ion-icon name="lock-closed"></ion-icon> </span>
+            <input type="password" required>
+            <label>Password</label>
+          </div>
+          <div class="remember-forgot">z
+            <a href="#">Forget Password?</a>
+          </div>
+          <a href="index.html" class="login-done">login</a>
+          <div class="register-link">
+            <p>Don't have any Account?<a href="#">Register</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      function openPopup() {
+        document.getElementById("loginPopup").classList.add("active");
+      }
+      function closePopup() {
+        document.getElementById("loginPopup").classList.remove("active");
+      }
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  </div>
+
+  <h1 style="margin-left:1000px; margin-top: 50px;">Branch Overview</h1>
+  <p style="font-size: 25px; margin-left: 900px; width: 550px;">At Global Food, we take pride in bringing the finest
+    international flavors right to your doorstep, and our [Branch Name] is no exception. Situated in the heart of
+    [City/Location], this branch offers an inviting atmosphere where guests can indulge in a diverse range of dishes
+    inspired by culinary traditions from around the world. Whether you're craving the bold spices of Indian cuisine,
+    the freshness of Mediterranean delicacies, or the comforting flavors of Italian classics, our menu has something
+    for every palate. Our friendly staff is dedicated to providing an exceptional dining experience, ensuring that
+    each visit is a journey through the tastes and romas of global cuisine. Join us at [Branch Name] for a truly
+    international dining experience that celebrates food, culture, and community.</p>
+  <br>
+  <br>
+  <br>
+  <br>
+  <h1 style="margin-left: 200px;">Branch Features</h1>
+  <p style="font-size: 25px; width: 550px; margin-left: 100px;">Our [Branch Name] offers a range of exceptional
+    features designed to enhance your dining experience. The modern yet cozy ambiance is perfect for both casual
+    meals and special gatherings. With spacious seating, a private dining area for group events, and an open kitchen
+    where guests can watch our chefs craft delicious dishes, we offer a unique and immersive atmosphere. For those
+    on the go, we also provide convenient takeout and delivery services to bring our global flavors right to your
+    doorstep. The branch is equipped with free Wi-Fi, a comfortable waiting area, and ample parking, ensuring a
+    seamless and enjoyable visit. Whether you're here for a quick bite or a leisurely meal, our [Branch Name] is
+    committed to providing the best in both food and service.</p>
+  <br>
+  <br>
+  <h1 style="margin-left:1000px; margin-top: 50px;">Visual Content</h1>
+  <p style="font-size: 25px; margin-left: 900px; width: 550px;">At Global Food, we believe that a great dining
+    experience begins with the right visuals. Our [Branch Name] is designed to stimulate your senses with stunning
+    aesthetics, from the vibrant colors of our international dishes to the carefully curated interior decor that
+    reflects the rich culinary heritage we offer. The restaurant features an open kitchen, allowing guests to
+    witness the artistry behind each meal, while the warm lighting and modern furnishings create an inviting
+    atmosphere. We also regularly update our visual content on social media, showcasing our mouthwatering dishes,
+    seasonal specials, and the dynamic ambiance of our branch. Follow us for a taste of what’s to come and a sneak
+    peek into our global culinary journey.</p>
+
+  <img src="Gemini_Generated_Image_fhlg7lfhlg7lfhlg.jpeg"
+    style="position: absolute; margin-top: -2250px; margin-left: 70px; width: 350px;">
+
+  <img src="Gemini_Generated_Image_hiz961hiz961hiz9.jpeg"
+    style="position: absolute; margin-top: -2250px; margin-left: 450px; width: 350px;">
+
+  <img src="Gemini_Generated_Image_qhw6dcqhw6dcqhw6.jpeg"
+    style="position: absolute; margin-top: -1860px; margin-left: 70px; width: 730px; height: 320px;">
+
+  <video autoplay loop muted style="width: 300px;position: absolute; margin-top: -1400px;margin-left: 1150px;">
+    <source src="https://videos.pond5.com/slow-motion-food-plating-upscale-footage-103220804_main_xxl.mp4">
+  </video>
+
+  <video autoplay loop muted style="width: 300px;position: absolute; margin-top: -1400px;margin-left: 800px;">
+    <source src="https://videos.pond5.com/slow-motion-food-decoration-presentation-footage-103328549_main_xxl.mp4">
+  </video>
+
+  <video autoplay loop muted style="width: 300px;position: absolute; margin-top: -1200px;margin-left: 1150px;">
+    <source src="https://videos.pond5.com/professionally-prepared-steak-dinner-footage-098880844_main_xxl.mp4">
+  </video>
+
+  <video autoplay loop muted
+    style="width: 300px;position: absolute; margin-top: -1200px;margin-left: 800px; height: 160px;">
+    <source src="https://videos.pond5.com/beef-steak-lettuce-and-cherry-footage-106135912_main_xxl.mp4">
+  </video>
+
+  <video autoplay loop muted style="width: 300px;position: absolute; margin-top: -1000px;margin-left: 1150px;">
+    <source src="https://videos.pond5.com/beef-steak-prepared-salad-and-footage-107404100_main_xxl.mp4">
+  </video>
+
+  <video autoplay loop muted
+    style="width: 300px;position: absolute; margin-top: -1000px;margin-left: 800px;height: 160px;">
+    <source src="https://videos.pond5.com/grilled-chicken-steak-potato-chips-footage-220786933_main_xxl.mp4">
+  </video>
+
+  <img src="WhatsApp Image 2025-03-22 at 16.30.00_3cc5f243.jpg"
+    style="position: absolute; margin-top: -650px; margin-left: 250px; width: 300px;">
+  <img src="WhatsApp Image 2025-03-22 at 16.31.37_b566e729.jpg"
+    style="position: absolute; margin-top: -350px; margin-left: 50px; width: 300px;">
+  <img src="WhatsApp Image 2025-03-22 at 16.31.18_a6fd9278.jpg"
+    style="position: absolute; margin-top: -350px; margin-left: 450px; width: 300px;">
+
+  <div class="address-box" style="border: none;">
+
+    <img src="https://static.vecteezy.com/system/resources/thumbnails/016/016/814/small/united-states-flag-free-png.png"
+      style="position: absolute;width: 320px;margin-top: 50px; margin-left: 60px;opacity: 0.15; ">
+    <div class="grid-item-1">
+      <h2 style="color: #716f6f;"><u>United States</u></h2>
+      <ul>
+        <li>123 Maple Street, Springfield</li>
+        <li>456 Oak Avenue, Los Angeles</li>
+        <li>789 Pine Road, Miami</li>
+      </ul>
+    </div>
+    </img>
+
+    <img src="https://img.freepik.com/free-vector/illustration-canada-flag_53876-27114.jpg"
+      style="position: absolute;width: 260px;margin-top: 140px; margin-left: 485px;opacity: 0.15;">
+    <div class="grid-item-2">
+      <h2 style="color: #716f6f; margin-left: -520px;"><u>Canada</u></h2>
+      <ul>
+        <li>101 Birch Crescent, Toronto</li>
+        <li>202 Cedar Lane, Vancouver</li>
+        <li>303 Elm Drive, Calgary</li>
+      </ul>
+    </div>
+    </img>
+
+    <img
+      src="https://png.pngtree.com/png-vector/20231115/ourmid/pngtree-great-britain-flag-against-a-white-background-white-png-image_10467390.png"
+      style="position: absolute;width: 280px;margin-top: -165px; margin-left: 900px;opacity: 0.15;">
+    <div class="grid-item-3">
+      <h2 style="color: #716f6f; margin-left: -90px;"><u>United Kingdom</u></h2>
+      <ul>
+        <li>12 High Street, London</li>
+        <li>34 Elm Road, Manchester</li>
+        <li>56 Oak Lane, Edinburgh</li>
+      </ul>
+    </div>
+    </img>
+
+    <img
+      src="https://static.vecteezy.com/system/resources/previews/027/572/537/non_2x/australia-flag-flag-of-australia-australia-flag-transparent-background-free-png.png"
+      style="position: absolute;width: 312px;margin-top: 27px; margin-left: 63px;opacity: 0.15;">
+    <div class="grid-item-4">
+      <h2 style="color: #716f6f" ;><u>Australia</u></h2>
+      <ul>
+        <li>78 Willow Way, Sydney</li>
+        <li>90 Palm Street, Melbourne</li>
+        <li>45 Gumtree Avenue, Brisbane</li>
+      </ul>
+    </div>
+    </img>
+
+    <img src="https://www.freeiconspng.com/thumbs/germany-flag/icons-of-germany-flag-fatherland-icon-png-3.png"
+      style="position: absolute;width: 346px;margin-top: 47px; margin-left: 450px;opacity: 0.15; height: 270px;">
+    <div class="grid-item-5">
+      <h2 style="color: #716f6f; margin-left: -520px;"><u>Germany</u></h2>
+      <ul>
+        <li>123 Hauptstraße, Berlin</li>
+        <li>456 Lindenweg, Munich</li>
+        <li>789 Eichenstraße, Frankfurt</li>
+      </ul>
+    </div>
+    </img>
+
+    <img
+      src="https://static.vecteezy.com/system/resources/previews/027/572/506/non_2x/france-flag-flag-of-france-france-flag-transparent-background-free-png.png"
+      style="position: absolute;width: 346px;margin-top: -210px; margin-left: 865px;opacity: 0.15; height: 270px;">
+    <div class="grid-item-6">
+      <h2 style="color: #716f6f; margin-left: -93px;"><u>France</u></h2>
+      <ul>
+        <li>12 Rue de la Paix</li>
+        <li>34 Avenue des Champs</li>
+        <li>56 Boulevard Saint-Germain</li>
+      </ul>
+    </div>
+    </img>
+
+    <img src="https://www.fotw.info/images/j/jp.gif"
+      style="position: absolute;width: 265px;margin-top: 85px; margin-left: 85px;opacity: 0.15; height: 132px;border: 1px solid black;">
+    <div class="grid-item-7">
+      <h2 style="color: #716f6f; margin-left: -910px;"><u>Japan</u></h2>
+      <ul>
+        <li>1-2-3 Sakura Street, Tokyo</li>
+        <li>4-5-6 Maple Avenue, Osaka</li>
+        <li>7-8-9 Pine Road, Kyoto</li>
+      </ul>
+    </div>
+    </img>
+
+    <img
+      src="https://static.vecteezy.com/system/resources/thumbnails/034/716/411/small/india-national-flag-in-original-ratio-transparent-free-png.png"
+      style="position: absolute;width: 366px;margin-top: -163px; margin-left: 440px;opacity: 0.15; height: 190px;">
+    <div class="grid-item-8">
+      <h2 style="color: #716f6f;margin-left: -505px;"><u>India</u></h2>
+      <ul>
+        <li>123 Mango Lane, Mumbai</li>
+        <li>456 Coconut Street, Bangalore</li>
+        <li>789 Banyan Road, Delhi</li>
+      </ul>
+    </div>
+    </img>
+
+    <img src="https://www.countryflags.com/wp-content/uploads/brazil-flag-png-xl.png"
+      style="position: absolute;width: 260px;margin-top: -142px; margin-left: 910px;opacity: 0.15; height: 135px;">
+    <div class="grid-item-9">
+      <h2 style="color: #716f6f;margin-left: -90px;"><u>Brazil</u></h2>
+      <ul>
+        <li>Rua das Flores, 123, São Paulo</li>
+        <li>Avenida do Sol, 456, Rio</li>
+        <li>Rua do Mar, 789, Brasília, DF</li>
+      </ul>
+    </div>
+    </img>
+  </div>
+  <h1 class="where-we-are">Where are we?</h1>
+
+  <div class="container my-5">
+
+    <footer class="text-center text-lg-start text-white" style="background-color: #1c2331; width: 1495px; margin-left: -100px;
+      margin-top: 930px !important; position: absolute; margin-top: 700px;">
+      <section class="d-flex justify-content-between p-4" style="background-color: #6351ce">
+        <div class="me-5">
+          <span>Get connected with us on social networks:</span>
+        </div>
+      </section>
+
+      <section class="">
+        <div class="container text-center text-md-start mt-5">
+          <div class="row mt-3">
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+              <img src="png-logo.png" style="position: absolute; width: 200px;">
+
+            </div>
+
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4" st>
+
+              <h6 class="text-uppercase fw-bold">Products</h6>
+              <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                style="width: 60px; background-color: #7c4dff; height: 2px" />
+              <p>
+                <a href="#!" class="text-white2">MDBootstrap</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white2">MDWordPress</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white2">BrandFlow</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white2">Bootstrap Angular</a>
+              </p>
+            </div>
+
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+              <h6 class="text-uppercase fw-bold">Useful links</h6>
+              <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                style="width: 60px; background-color: #7c4dff; height: 2px" />
+              <p>
+                <a href="#!" class="text-white2">Your Account</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white2">Become an Affiliate</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white2">Shipping Rates</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white2">Help</a>
+              </p>
+            </div>
+
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+              <h6 class="text-uppercase fw-bold">Contact</h6>
+              <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                style="width: 60px; background-color: #7c4dff; height: 2px; margin-top: 200px;" />
+              <p><i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+              <p><i class="fas fa-envelope mr-3"></i> info@example.com</p>
+              <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+              <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); width: 100%;">
+
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+    body {
+        display: flex;
+        justify-content: center;
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+
+    .image-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        width: 80%;
+        max-width: 1200px;
+    }
+
+    .image-card {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        padding: 10px;
+        background-color: #fff;
+    }
+
+    .image-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .food-points {
+        padding: 10px;
+        text-align: left;
+        font-size: 14px;
+        color: #333;
+    }
+
+    .food-points h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #e94e77;
+    }
+
+    .food-points ul {
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+
+    .food-points li {
+        margin-bottom: 5px;
+    }
+
+    @media (max-width: 768px) {
+        .image-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .image-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    
+</style>
+
+<body>
+
+    <div class="image-grid">
+
+        <div class="image-card">
+            <img src="https://static.toiimg.com/photo/51089680.cms" alt="Food Image 1">
+            <div class="food-points">
+                <h3>Food 1</h3>
+                <ul>
+                    <li>Delicious and hearty</li>
+                    <li>Perfect for breakfast</li>
+                    <li>Great with spices</li>
+                    <li>Fresh and crispy texture</li>
+                    <li>Nutritious and filling</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="image-card">
+            <img src="https://www.foodandwine.com/thmb/DI29Houjc_ccAtFKly0BbVsusHc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/crispy-comte-cheesburgers-FT-RECIPE0921-6166c6552b7148e8a8561f7765ddf20b.jpg"
+                alt="Crispy Cheeseburgers">
+            <div class="food-points">
+                <h3>Crispy Cheeseburgers</h3>
+                <ul>
+                    <li>Crispy on the outside</li>
+                    <li>Juicy and tender inside</li>
+                    <li>Perfectly grilled</li>
+                    <li>Cheese melts perfectly</li>
+                    <li>Great for a party</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="image-card">
+            <img src="https://www.spicebangla.com/wp-content/uploads/2024/08/Spicy-Pasta-recipe-optimised-scaled.webp"
+                alt="Spicy Pasta">
+            <div class="food-points">
+                <h3>Spicy Pasta</h3>
+                <ul>
+                    <li>Perfect blend of spices</li>
+                    <li>Full of flavor</li>
+                    <li>Great texture</li>
+                    <li>Easy to prepare</li>
+                    <li>Comfort food at its best</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="image-card">
+            <img src="https://www.spoton.com/blog/content/images/size/w1200/2024/09/1.-what-is-maki-sushi-guide-thin-rolls-hand-roll-shrimp-tempura-tuna-salmon-rice.jpeg"
+                alt="Maki Sushi">
+            <div class="food-points">
+                <h3>Maki Sushi</h3>
+                <ul>
+                    <li>Fresh and delicious</li>
+                    <li>Perfect sushi rolls</li>
+                    <li>Variety of fillings</li>
+                    <li>Light yet filling</li>
+                    <li>Great for sharing</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="image-card">
+            <img src="https://www.spoton.com/blog/content/images/size/w1200/2024/09/1.-what-is-maki-sushi-guide-thin-rolls-hand-roll-shrimp-tempura-tuna-salmon-rice.jpeg"
+                alt="Summer Salad">
+            <div class="food-points">
+                <h3>Summer Salad</h3>
+                <ul>
+                    <li>Refreshing and light</li>
+                    <li>Packed with fresh veggies</li>
+                    <li>Perfect for warm weather</li>
+                    <li>Full of nutrients</li>
+                    <li>Customizable to your taste</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="image-card">
+            <img src="https://images.immediate.co.uk/production/volatile/sites/30/2014/05/Epic-summer-salad-hub-2646e6e.jpg?resize=768,574"
+                alt="Cheese">
+            <div class="food-points">
+                <h3>Cheese</h3>
+                <ul>
+                    <li>Rich and creamy</li>
+                    <li>Perfect for snacking</li>
+                    <li>Variety of flavors</li>
+                    <li>Pairs well with fruits and wine</li>
+                    <li>Great in cooking</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="image-card">
+            <img src="https://www.sargento.com/assets/Uploads/Recipe/Image/Sargento11501.jpg" alt="Delicious Cake">
+            <div class="food-points">
+                <h3>Delicious Cake</h3>
+                <ul>
+                    <li>Fluffy and moist</li>
+                    <li>Perfect for celebrations</li>
+                    <li>Variety of flavors</li>
+                    <li>Easy to decorate</li>
+                    <li>Everyone loves a slice</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="image-card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR3hizBuSvPUyEHHLmOX0qX7Ha3JKHjYsUbw&s"
+                alt="Chocolate Cake">
+            <div class="food-points">
+                <h3>Chocolate Cake</h3>
+                <ul>
+                    <li>Rich and indulgent</li>
+                    <li>Perfect for chocolate lovers</li>
+                    <li>Moist and decadent</li>
+                    <li>Great with a glass of milk</li>
+                    <li>Perfect for any occasion</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="image-card">
+            <img src="https://static.toiimg.com/thumb/msid-112019658,width-1280,height-720,resizemode-4/112019658.jpg"
+                alt="Healthy Breakfast">
+            <div class="food-points">
+                <h3>Healthy Breakfast</h3>
+                <ul>
+                    <li>Light and energizing</li>
+                    <li>Full of vitamins</li>
+                    <li>Great for a morning boost</li>
+                    <li>Quick to prepare</li>
+                    <li>Perfect for weight management</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="image-card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLetnQTeyzm8StHzS_UpZDjW5m9M1uP4uPxg&s"
+                alt="Vegetable Soup">
+            <div class="food-points">
+                <h3>Vegetable Soup</h3>
+                <ul>
+                    <li>Light and healthy</li>
+                    <li>Packed with nutrients</li>
+                    <li>Great for cold weather</li>
+                    <li>Easy to make</li>
+                    <li>Customizable with different veggies</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="image-card">
+            <img src="https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2023/09/Vegetable-Soup-main.jpg"
+                alt="Vegetable Soup 2">
+            <div class="food-points">
+                <h3>Vegetable Soup 2</h3>
+                <ul>
+                    <li>Low in calories</li>
+                    <li>Full of fiber</li>
+                    <li>Great for digestion</li>
+                    <li>Vibrant and colorful</li>
+                    <li>Warm and comforting</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="image-card">
+            <img src="https://chaitrascreations.com/wp-content/uploads/2020/05/DSC_9226_edited-scaled.jpg"
+                alt="Sweet Dessert">
+            <div class="food-points">
+                <h3>Sweet Dessert</h3>
+                <ul>
+                    <li>Perfectly sweetened</li>
+                    <li>Light and fluffy</li>
+                    <li>Great for a treat</li>
+                    <li>Pairs well with coffee</li>
+                    <li>Simple to make</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="image-card">
+            <img src="https://images.indianexpress.com/2018/07/fish-sustainanbel-759.jpg?w=414" alt="Fish Dish">
+            <div class="food-points">
+                <h3>Fish Dish</h3>
+                <ul>
+                    <li>Rich in omega-3</li>
+                    <li>Healthy and light</li>
+                    <li>Pairs well with veggies</li>
+                    <li>Full of flavor</li>
+                    <li>Great for a balanced diet</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="image-card">
+            <img src="https://images.contentstack.io/v3/assets/bltcedd8dbd5891265b/blt02cf680667522d24/66707e8470fb6fb1b0d72705/types-of-cheese-hero.jpg"
+                alt="Fish Dish">
+            <div class="food-points">
+                <h3>Fish Dish</h3>
+                <ul>
+                    <li>Rich in omega-3</li>
+                    <li>Healthy and light</li>
+                    <li>Pairs well with veggies</li>
+                    <li>Full of flavor</li>
+                    <li>Great for a balanced diet</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="image-card">
+            <img src="https://media.istockphoto.com/id/522735736/photo/chocolate-background.jpg?s=612x612&w=0&k=20&c=fmBbjHi5zXpcbzAQWGy3xtPgcIJkc7eHXjZiYsi396A="
+                alt="Fish Dish">
+            <div class="food-points">
+                <h3>Fish Dish</h3>
+                <ul>
+                    <li>Rich in omega-3</li>
+                    <li>Healthy and light</li>
+                    <li>Pairs well with veggies</li>
+                    <li>Full of flavor</li>
+                    <li>Great for a balanced diet</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

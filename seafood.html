@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" type="global plate icon" href="png-logo.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GP/sea-food</title>
+  <link rel="stylesheet" href="CSS.css">
+  <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+</head>
+
+<style>
+  .login-box {
+    position: relative;
+    width: 90%;
+    min-width: 400px;
+    min-height: 450px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(8px);
+    background: url("https://www.shutterstock.com/image-vector/dark-blue-black-light-wall-600nw-2458398841.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+    box-shadow: 10px 10px 20px rgba(255, 255, 255, 0.649);
+  }
+
+  h2 {
+    font-size: 2em;
+    color: rgb(255, 255, 255);
+    text-align: center;
+  }
+
+  .input-box {
+    position: relative;
+    width: 310px;
+    margin: 30px 0;
+    height: 50px;
+  }
+
+  .input-box label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 15px;
+    color: rgb(255, 255, 255);
+    pointer-events: none;
+    animation: blink 1.5s 1;
+    transition: 0.6s;
+  }
+
+  .input-box input:focus~label,
+  .input-box input:valid~label {
+    top: -10px;
+    font-size: 10px;
+  }
+
+  @keyframes blink {
+
+    0%,
+    25% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0;
+    }
+
+    75% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .input-box input {
+    width: 100%;
+    height: 50px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: rgb(255, 255, 255);
+    margin-left: -30px;
+  }
+
+  .input-box .icon {
+    position: absolute;
+    right: 8px;
+    color: rgb(255, 255, 255);
+    font-size: 1.2em;
+    line-height: 57px;
+    animation: blink 1.5s 1;
+    margin-top: 8px;
+  }
+
+  .remember-forgot {
+    margin: -10px 5px 15px;
+    font-size: .9em;
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  .remember-forgot label input {
+    margin-right: 3px;
+  }
+
+  .remember-forgot a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+  }
+
+  .remember-forgot a:hover {
+    text-decoration: underline;
+  }
+
+  .login-done {
+    width: 70%;
+    height: 40px;
+    margin-top: 50px;
+    background: rgba(255, 255, 255, 0.966);
+    border-radius: 40px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1em;
+    color: #000000;
+    font-weight: 500;
+    position: absolute;
+    text-align: center;
+    padding: 6px;
+    text-decoration: none;
+    margin-left: 15px;
+  }
+
+  .login-done:hover {
+    background-color: rgba(56, 65, 143, 0.94);
+    color: white;
+  }
+
+  .register-link {
+    font-size: .9em;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin: 25px 0 10px;
+  }
+
+  .register-link p a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .register-link p a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width:360px) {
+    .login-box {
+      width: 100%;
+      height: 100vh;
+      border: none;
+      border-radius: 0;
+    }
+
+    .input-box {
+      width: 290px;
+    }
+  }
+
+  .popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .popup.active {
+    display: block;
+  }
+
+  .popup h2 {
+    margin-top: 0;
+  }
+
+  .popup input {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+  }
+
+  .popup button {
+    width: 100%;
+    padding: 10px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .popup button:hover {
+    background: #218838;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+  }
+
+  .login-btn {
+    position: absolute;
+    text-decoration: none;
+    margin-left: 180px;
+    font-size: 17px;
+    margin-top: 60px;
+    background-color: #ff6347;
+    border: none;
+    color: #ffffff;
+    padding: 5px 0px;
+    height: 40px;
+    border-radius: 5px;
+    width: 90px;
+  }
+
+  .login-btn:hover {
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 0px;
+    height: 40px;
+  }
+
+  .product-grid-container {
+    display: flex;
+    justify-content: center;
+    margin: -15px 0;
+    padding: 30px 0;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    width: 90%;
+    max-width: 1200px;
+  }
+
+  .product {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    transform: translateY(50px);
+    opacity: 0;
+    animation: slideUpFadeIn 2s ease forwards;
+    transition: transform 2s ease, box-shadow 2s ease;
+  }
+
+  .product img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 10px;
+    animation: transform 2s ease, filter 2s ease;
+  }
+
+  .product p {
+    margin-top: 10px;
+    color: #000;
+  }
+
+  .product img:hover {
+    scale: 1.05;
+    transition: 0.5s;
+  }
+
+  .product .price {
+    font-size: 0.9rem;
+    color: #464646;
+    margin-bottom: 12px;
+  }
+
+  .product:hover {
+    box-shadow: 2px 2px 10px black;
+    transition: 0ms;
+  }
+
+  .product button {
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    outline: none;
+    box-shadow: 0 4px 15px rgba(238, 154, 29, 0.5);
+  }
+
+  .product button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(238, 154, 29, 0.5);
+  }
+
+  .product button:active::before {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  @keyframes slideUpFadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+</style>
+
+<body>
+
+  <div class="menu">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid    menu-box">
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse  menu-div-box" id="navbarNavDropdown">
+
+          <ul class="navbar-nav">
+
+            <li class="nav-item ">
+              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="branch.html">Our branch</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <select class="food-style" name="food-style" onchange="window.location.href=this.value;">
+                <option class="" value="index.html">food categories</option>
+                <option class="veg" value="veg.html">Veg</option>
+                <option class="non-veg" value="non-veg.html">Non-Veg</option>
+                <option class="seafoods" value="seafood.html">Seafoods</option>
+              </select>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <nav class="navbar bg-body-tertiary   hide-div">
+
+      <div class="container-fluid">
+        <form class="d-flex search-div-box" role="search">
+          <input id="searchInput" class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+            style="height: auto; margin-top: 5px; width: 230px;" list="food-options">
+          <datalist id="food-options"></datalist>
+          <button class="btn btn-outline-success" type="submit"
+            style="margin-top: 5px; width: 70px; height: 40px; text-align: center; padding: 0px 5px;">Search</button>
+        </form>
+      </div>
+
+      <script>
+        const foodList = [
+          "Anchovy Pizza", "Fish Fillet Burger", "Seafood Pasta", "Salmon Sushi", "Shrimp Tacos", "Prawn Biryani", "Crab Dumplings", "Grilled Tuna Steak", "Seafood Ramen", "Lobster Roll Sandwich", "Squid Ink Noodles", "Shrimp Caesar Salad", "Garlic Butter Prawn Fried Rice", "Fish Shawarma", "Tandoori Fish Tikka", "Goan Fish Curry", "Prawn Pav", "Chocolate Mousse Cake", "Coconut Ice Cream", "Steamed Fish Momos"
+        ];
+
+        const searchInput = document.getElementById("searchInput");
+        const datalist = document.getElementById("food-options");
+
+        searchInput.addEventListener("input", function () {
+          let value = searchInput.value.toLowerCase();
+          datalist.innerHTML = ""; // Clear previous options
+
+          if (value.length > 0) {  // Ensure input is not empty
+            let filteredList = foodList.filter(item => item.toLowerCase().startsWith(value)); // Match from the start
+
+            filteredList.forEach(food => {
+              let option = document.createElement("option");
+              option.value = food;
+              datalist.appendChild(option);
+            });
+          }
+        });
+      </script>
+
+    </nav>
+
+    <a href="index.html"><img src="png-logo.png" class="logo"></a>
+
+    <button onclick="openPopup()" class="login-btn" style="margin-left: 1380px; margin-top: -60px;">Login</button>
+    <div id="loginPopup" class="popup">
+      <div class="login-box">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <form action="">
+          <h2>Login</h2>
+          <div class="input-box">
+            <span class="icon"><ion-icon name="mail"></ion-icon></span>
+            <input type="text" required>
+            <label>Email</label>
+          </div>
+          <div class="input-box">
+            <span class="icon"><ion-icon name="lock-closed"></ion-icon> </span>
+            <input type="password" required>
+            <label>Password</label>
+          </div>
+          <div class="remember-forgot">
+            <a href="#">Forget Password?</a>
+          </div>
+          <a href="index.html" class="login-done">login</a>
+          <div class="register-link">
+            <p>Don't have any Account?<a href="#">Register</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      function openPopup() {
+        document.getElementById("loginPopup").classList.add("active");
+      }
+      function closePopup() {
+        document.getElementById("loginPopup").classList.remove("active");
+      }
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  </div>
+
+  <div class="text-overlay" style="color: rgb(248, 243, 243); text-shadow: 50px 50px 50px #000;">
+    <h1>Delicious Seafood Delights</h1>
+    <p>Fresh from the Ocean: Savor the Best of Seafood</p>
+    <button class="cta-button">Explore Menu</button>
+  </div>
+
+  <video autoplay loop muted class="food-video">
+    <source
+      src="https://video-previews.elements.envatousercontent.com/5373a9b5-906b-486f-9c82-730a1f9aa723/watermarked_preview/watermarked_preview.mp4">
+  </video>
+
+  <div class="product-grid-container">
+    <div class="product-grid">
+
+      <div class="product">
+        <img
+          src="https://www.foodandwine.com/thmb/yfYSUIlcfbXD-0g_-m8g_utIgww=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Garlic-shrimp-in-tomato-sauce-FT-RECIPE0424-efd976fab22444e69c7f5b469d5aadd3.jpg"
+          style="height: 110px;">
+        <p style="color: #000;font-size: large;">Shrimp</p>
+        <div class="price">$25.99</div>
+        <button>Buy Now</button>
+      </div>
+
+      <div class="product">
+        <img
+          src="https://images.contentstack.io/v3/assets/bltcedd8dbd5891265b/blt24ec23b847ffa656/664cbd7cbf310363de83b338/copper-river-king-salmon-recipe-hero.jpg?q=70&width=3840&auto=webp"
+          style="height: 110px;">
+        <p style="color: #000;font-size: large;">Salmon </p>
+        <div class="price">$30.00</div>
+        <button>Buy Now</button>
+      </div>
+
+      <div class="product">
+        <img src="https://foodieandwine.com/wp-content/uploads/2023/01/sashimi-tuna.jpg" style="height: 110px;">
+        <p style="color: #000;font-size: large; ">Tuna</p>
+        <div class="price">$19.99</div>
+        <button>Buy Now</button>
+      </div>
+
+      <div class="product">
+        <img
+          src="https://static01.nyt.com/images/2024/02/09/multimedia/LH-lobster-thermidor-plzk/LH-lobster-thermidor-plzk-videoSixteenByNineJumbo1600.jpg"
+          style="height: 110px;">
+        <p style="color: #000;font-size: large;">Lobster</p>
+        <div class="price">$45.50</div>
+        <button>Buy Now</button>
+      </div>
+
+      <div class="product">
+        <img src="https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2023/07/How-To-Cook-Crab-Legs-main.jpg;"
+          style="height: 110px;">
+        <p style="color: #000;font-size: large;">Crab </p>
+        <div class="price">$99.99</div>
+        <button>Buy Now</button>
+      </div>
+
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="product-grid-container">
+    <div class="product-grid">
+
+      <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTm0CGdDfRaMyEMVnPlH7QYamFTyBjZyh-GhQ&s"
+          style="height: 110px;">
+        <p style="color: #000;font-size: large;">Clams</p>
+        <div class="price">$25.99</div>
+        <button>Buy Now</button>
+      </div>
+
+      <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwQN6DpAnxnDvJKf_jN0M8WTiMN7EULJZ6mw&s"
+          style="height: 110px;">
+        <p style="color: #000;font-size: large;">Oysters</p>
+        <div class="price">$30.00</div>
+        <button>Buy Now</button>
+      </div>
+
+      <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThGoDS1UeKyfYIkSUlcYxK_H2cy2W3854Ulg&s"
+          style="height: 110px;">
+        <p style="color: #000;font-size: large;">Mussels </p>
+        <div class="price">$19.99</div>
+        <button>Buy Now</button>
+      </div>
+
+      <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmKMf6nT38_1hlyp11ixNRLxmMLztpbu4pYQ&s"
+          style="height: 110px;">
+        <p style="color: #000;font-size: large;">Scallops </p>
+        <div class="price">$45.50</div>
+        <button>Buy Now</button>
+      </div>
+
+      <div class="product">
+        <img src="https://www.sizzlefish.com/cdn/shop/articles/Easy_Fried_Calamari_Alternate_Main.jpg?v=1678205798"
+          style="height: 110px;">
+        <p style="color: #000;font-size: large;">Squid </p>
+        <div class="price">$99.99</div>
+        <button>Buy Now</button>
+      </div>
+
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="product-grid-container">
+    <div class="product-grid">
+
+      <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPOknJXoYUfhuaPT4etHEppnGid9Dg_ncaQQ&s"
+          style="height: 110px;">
+        <p style="color: #000;font-size: large;">Octopus</p>
+        <div class="price">$25.99</div>
+        <button>Buy Now</button>
+      </div>
+
+      <div class="product">
+        <img src="https://rms.condenast.it/rms/public/5d3/f07/289/thumb_2319_1200_670_0_0_auto.jpg"
+          style="height: 110px;">
+        <p style="color: #000;font-size: large;">Anchovies</p>
+        <div class="price">$30.00</div>
+        <button>Buy Now</button>
+      </div>
+
+      <div class="product">
+        <img
+          src="https://seafoodexperts.com.au/wp-content/uploads/2018/03/SR-166-Sardine-red-onion-chilli-vinaigrette-CLEAN.jpg"
+          style="height: 110px;">
+        <p style="color: #000;font-size: large;">Sardines</p>
+        <div class="price">$19.99</div>
+        <button>Buy Now</button>
+      </div>
+
+      <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStWGU-C_1e-z3UvSv-Kmg9GYYMeMJadgWfjQ&s"
+          style="height: 110px;" `>
+        <p style="color: #000;font-size: large;">Sea Bass</p>
+        <div class="price">$45.50</div>
+        <button>Buy Now</button>
+      </div>
+
+      <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUImHSxJzlAsNg94rir3f57YF8eBqxlyINDQ&s"
+          style="height: 110px;">
+        <p style="color: #000;font-size: large;">Cod</p>
+        <div class="price">$99.99</div>
+        <button>Buy Now</button>
+      </div>
+
+    </div>
+  </div>
+  <br>
+  <br>
+
+  <div class="product-grid-container">
+    <div class="product-grid">
+
+      <div class="product">
+        <img src="https://i.redd.it/o7hrre3lzzz71.jpg" style="height: 110px;">
+        <p style="color: #000;font-size: large;">Halibut </p>
+        <div class="price">$25.99</div>
+        <button>Buy Now</button>
+      </div>
+
+      <div class="product">
+        <img src="https://danosseasoning.com/wp-content/uploads/2023/03/Red-Snapper-Ceviche-1024x767.jpg"
+          style="height: 110px;">
+        <p style="color: #000;font-size: large;">Red Snapper</p>
+        <div class="price">$30.00</div>
+        <button>Buy Now</button>
+      </div>
+
+      <div class="product">
+        <img
+          src="https://www.foodandwine.com/thmb/nryT_MnAdrqRLMai8Qs8dFjUUyg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Pan-Fried-Flounder-with-Lemon-Butter-Sauce-FT-RECIPE0224-2bff222a0c8944639933ad00a340e976.jpg"
+          style="height: 110px;">
+        <p style="color: #000;font-size: large;">Flounder</p>
+        <div class="price">$19.99</div>
+        <button>Buy Now</button>
+      </div>
+
+      <div class="product">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRldOTuzuBaLsGtMq7v4KoxD_fdZrMoKBzTwQ&s"
+          style="height: 110px;">
+        <p style="color: #000;font-size: large;">Mahi-Mahi </p>
+        <div class="price">$45.50</div>
+        <button>Buy Now</button>
+      </div>
+
+      <div class="product">
+        <img
+          src="https://www.thebetterfish.com/wp-content/uploads/2022/07/Recipes-Barramundi-With-Lemon-Butter-Sauce.jpg"
+          style="height: 110px;">
+        <p style="color: #000;font-size: large;">Barramundi </p>
+        <div class="price">$99.99</div>
+        <button>Buy Now</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="para" style="margin-top: 120px; margin-left: 120px;">
+    <p style="font-size: 25px; text-align: center; width: 500px;">Seafood is a delectable and nutritious choice for food
+      lovers, offering a wide variety of flavors and textures from the ocean's bounty. Whether it’s succulent shrimp,
+      tender lobster, flaky fish, or delicate oysters, seafood is known for its fresh, light taste and high protein
+      content. Rich in essential nutrients like omega-3 fatty acids, vitamins, and minerals, seafood is not only
+      delicious but also supports heart health and overall wellness. Perfect for any occasion, from casual meals to
+      elegant dinners, seafood provides a flavorful experience that connects us to the ocean's richness.
+    </p>
+  </div>
+
+  <div class="slow-video" style="margin-top: 900px;">
+    <video autoplay loop muted style="width: 300px;position: absolute; margin-top: -1400px;margin-left: 1150px;">
+      <source src="https://videos.pond5.com/slow-motion-food-plating-upscale-footage-103220804_main_xxl.mp4">
+    </video>
+
+    <video autoplay loop muted style="width: 300px;position: absolute; margin-top: -1400px;margin-left: 800px;">
+      <source src="https://videos.pond5.com/slow-motion-food-decoration-presentation-footage-103328549_main_xxl.mp4">
+    </video>
+
+    <video autoplay loop muted style="width: 300px;position: absolute; margin-top: -1200px;margin-left: 1150px;">
+      <source src="https://videos.pond5.com/professionally-prepared-steak-dinner-footage-098880844_main_xxl.mp4">
+    </video>
+
+    <video autoplay loop muted
+      style="width: 300px;position: absolute; margin-top: -1200px;margin-left: 800px; height: 160px;">
+      <source src="https://videos.pond5.com/beef-steak-lettuce-and-cherry-footage-106135912_main_xxl.mp4">
+    </video>
+
+    <video autoplay loop muted style="width: 300px;position: absolute; margin-top: -1000px;margin-left: 1150px;">
+      <source src="https://videos.pond5.com/beef-steak-prepared-salad-and-footage-107404100_main_xxl.mp4">
+    </video>
+
+    <video autoplay loop muted
+      style="width: 300px;position: absolute; margin-top: -1000px;margin-left: 800px;height: 160px;">
+      <source src="https://videos.pond5.com/grilled-chicken-steak-potato-chips-footage-220786933_main_xxl.mp4">
+    </video>
+  </div>
+
+  <div class="container my-5">
+
+    <footer class="text-center text-lg-start text-white" style="background-color:  #1c2331; width: 1495px; margin-left: -100px;
+       position: absolute; margin-top: -710px;">
+
+      <section class="d-flex justify-content-between p-4" style="background-color: #6351ce">
+
+        <div class="me-5">
+          <span>Get connected with us on social networks:</span>
+        </div>
+
+        <div>
+          <a href="" class="text-white me-4">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="" class="text-white me-4">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="" class="text-white me-4">
+            <i class="fab fa-google"></i>
+          </a>
+          <a href="" class="text-white me-4">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="" class="text-white me-4">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="" class="text-white me-4">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+
+      </section>
+
+      <section class="">
+
+        <div class="container text-center text-md-start mt-5">
+          <div class="row mt-3">
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+              <img src="png-logo.png" style="position: absolute; width: 200px;">
+            </div>
+
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+              <h6 class="text-uppercase fw-bold">Products</h6>
+              <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                style="width: 60px; background-color: #7c4dff; height: 2px" />
+              <p>
+                <a href="#!" class="text-white2">MDBootstrap</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white2">MDWordPress</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white2">BrandFlow</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white2">Bootstrap Angular</a>
+              </p>
+            </div>
+
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+              <h6 class="text-uppercase fw-bold">Useful links</h6>
+              <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                style="width: 60px; background-color: #7c4dff; height: 2px" />
+              <p>
+
+                <a href="#!" class="text-white2">Your Account</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white2">Become an Affiliate</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white2">Shipping Rates</a>
+              </p>
+              <p>
+                <a href="#!" class="text-white2">Help</a>
+              </p>
+
+            </div>
+
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+              <h6 class="text-uppercase fw-bold">Contact</h6>
+              <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                style="width: 60px; background-color: #7c4dff; height: 2px; margin-top: 200px;" />
+
+              <p><i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+              <p><i class="fas fa-envelope mr-3"></i> info@example.com</p>
+              <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+              <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); width: 100%;">
+
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+
+</html>
